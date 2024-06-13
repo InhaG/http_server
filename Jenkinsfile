@@ -35,9 +35,9 @@ pipeline {
         stage('Create Image'){
             steps{
                git 'https://github.com/etitovets/http_server'
-               sh 'docker build -t zipp/http-server:jenkins .'
+               sh 'docker build -t zipp/http-server:jenkins.$BUILD_NUMBER .'
                sh 'docker login -u $USER_CREDENTIALS_USR -p $USER_CREDENTIALS_PSW'
-               sh 'docker push zipp/http-server:jenkins'
+               sh 'docker push zipp/http-server:jenkins.$BUILD_NUMBER'
 
             }
         }
